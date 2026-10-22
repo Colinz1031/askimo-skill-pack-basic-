@@ -1,6 +1,6 @@
 # Askimo + Ubuntu WSL2 research pack
 
-This pack is tailored for Askimo on Windows and the existing WSL2 distribution Ubuntu-22.04 (Linux user astraia1031).
+This pack is tailored for Askimo on Windows and the existing WSL2 distribution Ubuntu-22.04
 
 ## What is included
 
@@ -9,7 +9,7 @@ This pack is tailored for Askimo on Windows and the existing WSL2 distribution U
 - skills/: editable source files for all Skills.
 - mcp-bridge/: editable MCP server source and dependency list.
 
-The bridge only exposes files below /home/astraia1031/research/projects. It does not provide arbitrary shell execution. It omits hidden folders, .venv, .git, datasets, results, credential-like files, and binary/database files. File writes do not replace an existing file unless overwrite=true is explicitly passed.
+The bridge only exposes files below /home/users. It does not provide arbitrary shell execution. It omits hidden folders, .venv, .git, datasets, results, credential-like files, and binary/database files. File writes do not replace an existing file unless overwrite=true is explicitly passed.
 
 ## Import the Skills
 
@@ -22,9 +22,9 @@ Skills are instructions, not security controls. Askimo's Agent view launches the
 1. Extract this pack somewhere on Windows, or extract ubuntu-wsl-mcp-bridge.zip.
 2. In PowerShell, create the Linux destination and copy the two bridge files into Ubuntu:
 
-   wsl.exe -d Ubuntu-22.04 --exec mkdir -p /home/astraia1031/research/tools/askimo-wsl-bridge
+   wsl.exe -d Ubuntu-22.04 --exec mkdir -p /home/users/tools/askimo-wsl-bridge
 
-   Copy-Item -Path '.\mcp-bridge\*' -Destination '\\wsl.localhost\Ubuntu-22.04\home\astraia1031\research\tools\askimo-wsl-bridge' -Recurse -Force
+   Copy-Item -Path '.\mcp-bridge\*' -Destination '\\wsl.localhost\Ubuntu-22.04\home\users\tools\askimo-wsl-bridge' -Recurse -Force
 
    If you extracted only ubuntu-wsl-mcp-bridge.zip, change the source path to the extracted mcp-bridge folder.
 
@@ -42,7 +42,7 @@ Skills are instructions, not security controls. Askimo's Agent view launches the
    - Name: Ubuntu Research Bridge
    - Transport: Stdio
    - Command: wsl.exe
-   - Arguments: -d Ubuntu-22.04 --exec /home/astraia1031/research/tools/askimo-wsl-bridge/.venv/bin/python /home/astraia1031/research/tools/askimo-wsl-bridge/server.py
+   - Arguments: -d Ubuntu-22.04 --exec /home/astraia1031/research/tools/askimo-wsl-bridge/.venv/bin/python /home/users/tools/askimo-wsl-bridge/server.py
    - Working directory: leave blank
 
    Click Test Connection, then Save. In an Askimo Chat conversation, open the Tools picker and enable Ubuntu Research Bridge. Try the tools ubuntu_status or search_arxiv.
